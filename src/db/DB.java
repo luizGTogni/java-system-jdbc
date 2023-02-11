@@ -26,7 +26,7 @@ public class DB {
 			
 		}
 		
-		return null;
+		return conn;
 	}
 	
 	public static void closeConnection() {

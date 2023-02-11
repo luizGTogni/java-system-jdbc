@@ -19,21 +19,21 @@ import javafx.scene.layout.VBox;
 import model.services.DepartmentService;
 
 public class MainViewController implements Initializable {
-	
+
 	@FXML
 	private MenuItem menuItemSeller;
-
+	
 	@FXML
 	private MenuItem menuItemDepartment;
 	
 	@FXML
 	private MenuItem menuItemAbout;
-	
+
 	@FXML
 	public void onMenuItemSellerAction() {
 		System.out.println("onMenuItemSellerAction");
 	}
-	
+
 	@FXML
 	public void onMenuItemDepartmentAction() {
 		loadView("/gui/DepartmentList.fxml", (DepartmentListController controller) -> {
@@ -49,7 +49,6 @@ public class MainViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
-		
 	}
 	
 	private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction) {
@@ -67,8 +66,9 @@ public class MainViewController implements Initializable {
 			
 			T controller = loader.getController();
 			initializingAction.accept(controller);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
-	}
+	}	
 }
